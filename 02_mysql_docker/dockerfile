@@ -1,0 +1,13 @@
+FROM mysql:8.0
+
+# Establecer variables de entorno para el usuario y la contraseña
+ENV MYSQL_DATABASE=Pictures \
+    MYSQL_USER=mbit \
+    MYSQL_PASSWORD=mbit 
+
+
+# Copiar el script SQL al directorio de inicialización
+COPY code.sql /docker-entrypoint-initdb.d/
+
+# Exponer el puerto por defecto de MySQL
+EXPOSE 3306
